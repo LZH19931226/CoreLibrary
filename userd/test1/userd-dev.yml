@@ -1,0 +1,29 @@
+###服务端口号
+server:
+  port: 8605
+spring:
+  application:
+    name: userd
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8606
+  ####consul注册中心地址
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:  ##表示服务地址 服务所在主机ip
+        healthCheckInterval: 15s
+        instance-id: userd
+        health-check-path: /actuator/health
+  zipkin:
+    base-url: http://localhost:8604
+  sleuth:
+    sampler:
+      probability: 1.0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
